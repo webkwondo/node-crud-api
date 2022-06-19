@@ -1,0 +1,54 @@
+###########
+# Python #
+###########
+*.pyc
+*.pyo
+
+
+###########
+# Eclipse #
+###########
+.project
+.pydevproject
+.settings/
+
+
+########
+# IDEA #
+########
+.idea
+
+
+#######
+# vim #
+#######
+*.sw[a-p]
+.ropeproject
+
+
+############
+# Haystack #
+############
+haystack_index/
+
+
+#########
+# Local #
+#########
+local.*
+database.sqlite3
+/static_files/
+
+
+##############
+# Exceptions #
+##############
+!*.sample
+/xml/
+/xml.bak/
+/xml.tmp/
+
+node_modules
+.DS_Store
+Thumbs.db
+Thumbs.db:encryptable
