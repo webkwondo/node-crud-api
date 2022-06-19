@@ -1,6 +1,6 @@
 # Node CRUD API
 
-CRUD API using Node.js with in-memory database (.json) and uses asynchronous API
+CRUD API using Node.js with in-memory database (.json) and asynchronous API
 
 ## Usage
 
@@ -16,6 +16,8 @@ npm run start:prod
 ```
 
 App stores user records in `src/srorage.json` file.
+
+App port value is stored in `.env` file
 
 To see in action use Postman or curl
 
