@@ -14,8 +14,14 @@
     "hobbies": ["Reading classic literature"]
   },
   {
+    "id": "20cbca90-db20-40ad-b213-9128cced3a4c",
+    "username": "ben",
+    "age": 46,
+    "hobbies": ["Swimming"]
+  },
+  {
     "id": "02e4937d-d87c-452b-9da9-be83551e7cf8",
-    "username": "some other name",
+    "username": "cherry",
     "age": 56,
     "hobbies": ["Sightseeing", "Travelling"]
   },
