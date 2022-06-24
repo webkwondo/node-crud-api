@@ -1,14 +1,15 @@
 import { validate as uuidValidate } from 'uuid';
-import { getAllUsers, findUser, addUser, deleteUser, updateUser } from './../models/user-model.js';
+import { getAllUsers, findUser, addUser, deleteUser, updateUser } from '../models/user-model';
+import http from 'http';
 
-const handleAllUsersRequest = async (res) => {
+const handleAllUsersRequest = async (res: http.ServerResponse) => {
   res.writeHead(200);
   res.end(JSON.stringify(getAllUsers()));
 };
 
-const handleUserRequest = async (method, req, res, userId) => {
+const handleUserRequest = async (method: string, req: http.IncomingMessage, res: http.ServerResponse, userId = '') => {
 
-  const handleUser = async (uid, successCode = 200, action) => {
+  const handleUser = async (uid: string, successCode = 200, action?: (id: string) => Promise<{}>) => {
 
     if (!uuidValidate(uid)) {
       res.writeHead(400);
@@ -17,6 +18,7 @@ const handleUserRequest = async (method, req, res, userId) => {
     }
 
     let user = findUser(uid);
+    // let msgObj: {message: string} | string;
 
     if (!user) {
       res.writeHead(404);
@@ -26,14 +28,19 @@ const handleUserRequest = async (method, req, res, userId) => {
 
     try {
       if (action) {
-        user = [ await action(uid) ];
+        const msgObj = [ await action(uid) ];
+
+        res.writeHead(successCode);
+        res.end(JSON.stringify(msgObj));
+        return true;
       }
 
-      res.writeHead(successCode);
+      // res.writeHead(successCode);
     } catch (error) {
       throw error;
     }
 
+    res.writeHead(successCode);
     res.end(JSON.stringify(user));
     return true;
   };
@@ -51,7 +58,11 @@ const handleUserRequest = async (method, req, res, userId) => {
     return parsedReqBody;
   };
 
-  let reqBodyData = '';
+  let reqBodyData: {
+    username: string;
+    age: number;
+    hobbies: string[];
+  };
 
   switch (method) {
     case 'GET':
@@ -70,12 +81,12 @@ const handleUserRequest = async (method, req, res, userId) => {
     case 'PUT':
       reqBodyData = await getReqBody();
 
-      await handleUser(userId, 200, async (uid) => {
+      await handleUser(userId, 200, async (uid: string) => {
         return await updateUser(uid, reqBodyData);
       });
       break;
     case 'DELETE':
-      await handleUser(userId, 204, async (uid) => {
+      await handleUser(userId, 204, async (uid: string) => {
         return await deleteUser(uid);
       });
       break;

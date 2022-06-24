@@ -4,6 +4,10 @@ CRUD API using Node.js with in-memory database (.json) and asynchronous API
 
 ## Usage
 
+Make sure you use Node.js v16 and above
+
+Also make sure you stop one npm script (server process) before starting another (for example, after `start:dev` script, if the server is still running, press `Ctrl + C` to start `npm run start:multi` or another script)
+
 ```
 # Install dependencies
 npm install
@@ -13,6 +17,12 @@ npm run start:dev
 
 # Run in production
 npm run start:prod
+
+# Run with load balancer
+npm run start:multi
+
+# Run tests
+npm test
 ```
 
 App stores user records in `src/srorage.json` file.
@@ -54,4 +64,13 @@ PUT update user, valid but missing id http://localhost:8083/api/users/d9d66c78-c
 DELETE user http://localhost:8083/api/users/20cbca90-db20-40ad-b213-9128cced3a4c
 DELETE user, invalid id (not uuid) http://localhost:8083/api/users/85rjfhjfdhjgfhj
 DELETE user, valid but missing id http://localhost:8083/api/users/20cbca90-db20-40ad-b213-9128cced3a4c
+```
+
+# Testing
+
+Tests are done with Jest and Supertest
+
+```
+# Run tests
+npm test
 ```
