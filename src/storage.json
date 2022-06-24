@@ -1,0 +1,34 @@
+[
+  { "id": "lsdfj8s7fsjfn", "username": "alchemist", "age": 27, "hobbies": ["Alchemy"] },
+  { "id": "dhd64ujgjggjffje", "username": "sor", "age": 24, "hobbies": ["Skiting", "Spelunking"] },
+  {
+    "id": "6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b",
+    "username": "lany",
+    "age": 29,
+    "hobbies": ["Music", "Ukulele", "Singing"]
+  },
+  {
+    "id": "0dc225ae-07b4-46e0-a182-5369cf1798c7",
+    "username": "alisa",
+    "age": 26,
+    "hobbies": ["Reading classic literature"]
+  },
+  {
+    "id": "20cbca90-db20-40ad-b213-9128cced3a4c",
+    "username": "ben",
+    "age": 46,
+    "hobbies": ["Swimming"]
+  },
+  {
+    "id": "02e4937d-d87c-452b-9da9-be83551e7cf8",
+    "username": "cherry",
+    "age": 56,
+    "hobbies": ["Sightseeing", "Travelling"]
+  },
+  {
+    "id": "61ff7a7c-0e8e-445c-bd64-eb423d122a47",
+    "username": "kenya",
+    "age": 32,
+    "hobbies": ["Travelling", "Photography"]
+  }
+]
