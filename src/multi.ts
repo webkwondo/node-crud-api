@@ -3,11 +3,11 @@ import { cpus } from 'os';
 
 const cpusNum = cpus().length;
 
-const balanceLoad = async (fn: () => {}) => {
+const balanceLoad = async (fn: (workerPort: number) => Promise<void>, port: number) => {
   if (cluster.isPrimary) {
     console.info(`Primary process ${process.pid} started`);
 
-    for (let i = 0; i < cpusNum; i++) {
+    for (let i = 0; i < cpusNum - 1; i++) {
       cluster.fork();
     }
 
@@ -15,12 +15,14 @@ const balanceLoad = async (fn: () => {}) => {
       console.info(`Worker ${worker.process.pid} died`);
     });
   } else {
+    const workerId = cluster?.worker?.id || 1;
+    const workerPort = port + workerId;
 
     if (fn) {
-      await fn();
+      await fn(workerPort);
     }
 
-    console.info(`Worker ${process.pid} started`);
+    console.info(`Worker ${process.pid} started on port ${workerPort}`);
   }
 };
 

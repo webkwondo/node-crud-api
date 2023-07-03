@@ -4,7 +4,7 @@ CRUD API using Node.js with in-memory database (.json) and asynchronous API
 
 ## Usage
 
-Make sure you use Node.js v16 and above
+Make sure you use Node.js v18 and above
 
 Also make sure you stop one npm script (server process) before starting another (for example, after `start:dev` script, if the server is still running, press `Ctrl + C` to start `npm run start:multi` or another script)
 

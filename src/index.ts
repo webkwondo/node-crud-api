@@ -12,11 +12,11 @@ const PORT = parseInt((process.env.PORT ?? '8000'), 10);
 const dbFilePath = join(__dirname, 'storage.json');
 
 if (checkEnv('APP_LOAD_MODE', 'multi')) {
-  await balanceLoad(async () => {
+  await balanceLoad(async (workerPort) => {
     const server = await makeServer(dbFilePath);
 
-    server.listen(PORT, HOST);
-  });
+    server.listen(workerPort, HOST);
+  }, PORT);
 } else {
   const server = await makeServer(dbFilePath);
 

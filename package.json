@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start:dev": "webpack --watch --config webpack.dev.js",
-    "start:prod": "webpack --config webpack.prod.js",
+    "start:prod": "webpack --config webpack.prod.js && node dist/index.js",
     "start": "node dist/index.js",
     "start:multi": "cross-env APP_LOAD_MODE=multi webpack --watch --config webpack.dev.js",
     "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest"
